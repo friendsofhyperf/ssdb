@@ -23,7 +23,6 @@ class ConfigProvider
         return [
             'dependencies' => [
                 Ssdb::class => SsdbFactory::class,
-                SsdbFactory::class => SsdbFactory::class,
                 SsdbHandler::class => SsdbHandlerFactory::class,
             ],
             'annotations' => [

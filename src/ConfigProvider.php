@@ -10,6 +10,8 @@ declare(strict_types=1);
  */
 namespace FriendsOfHyperf\Ssdb;
 
+use FriendsOfHyperf\Ssdb\SessionHandler\SsdbHandler;
+use FriendsOfHyperf\Ssdb\SessionHandler\SsdbHandlerFactory;
 use Huangdijia\Ssdb\Ssdb;
 
 class ConfigProvider
@@ -22,7 +24,7 @@ class ConfigProvider
             'dependencies' => [
                 Ssdb::class => SsdbFactory::class,
                 SsdbFactory::class => SsdbFactory::class,
-                Contract\SessionInterface::class => SessionHandler\SsdbHandlerFactory::class,
+                SsdbHandler::class => SsdbHandlerFactory::class,
             ],
             'annotations' => [
                 'scan' => [

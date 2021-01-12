@@ -1,0 +1,38 @@
+{
+    "name": "friendsofhyperf/ssdb",
+    "description": "SSDB for Hyperf.",
+    "type": "library",
+    "require": {
+        "php": ">=7.2",
+        "huangdijia/ssdb": "^0.1.0"
+    },
+    "require-dev": {
+        "hyperf/cache": "^2.0",
+        "hyperf/di": "^2.0",
+        "hyperf/event": "^2.1",
+        "hyperf/framework": "^2.0",
+        "friendsofphp/php-cs-fixer": "^2.04",
+        "swoole/ide-helper": "dev-master",
+        "phpstan/phpstan": "^0.12",
+        "hyperf/session": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "FriendsOfHyperf\\Ssdb\\": "src/"
+        }
+    },
+    "extra": {
+        "hyperf": {
+            "config": "FriendsOfHyperf\\Ssdb\\ConfigProvider"
+        }
+    },
+    "license": "MIT",
+    "authors": [{
+        "name": "huangdijia",
+        "email": "huangdijia@gmail.com"
+    }],
+    "scripts": {
+        "cs-fix": "php-cs-fixer fix $1",
+        "analyse": "phpstan analyse --memory-limit 300M -l 0 -c phpstan.neon ./src"
+    }
+}

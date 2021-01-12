@@ -18,17 +18,12 @@ class ConfigProvider
     {
         defined('BASE_PATH') or define('BASE_PATH', __DIR__);
 
-        $dependencies = [
-            Ssdb::class => SsdbFactory::class,
-            SsdbFactory::class => SsdbFactory::class,
-        ];
-
-        if (class_exists('Hyperf\Contract\SessionInterface')) {
-            $dependencies[Contract\SessionInterface::class] = SessionHandler\SsdbHandlerFactory::class;
-        }
-
         return [
-            'dependencies' => $dependencies,
+            'dependencies' => [
+                Ssdb::class => SsdbFactory::class,
+                SsdbFactory::class => SsdbFactory::class,
+                Contract\SessionInterface::class => SessionHandler\SsdbHandlerFactory::class,
+            ],
             'annotations' => [
                 'scan' => [
                     'paths' => [

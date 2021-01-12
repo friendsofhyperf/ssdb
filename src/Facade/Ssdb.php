@@ -10,7 +10,7 @@ declare(strict_types=1);
  */
 namespace FriendsOfHyperf\Ssdb\Facade;
 
-use FriendsOfHyperf\Ssdb\SsdbFactory;
+use FriendsOfHyperf\Ssdb\SsdbManager;
 use Hyperf\Utils\ApplicationContext;
 use TypeError;
 
@@ -117,6 +117,6 @@ class Ssdb
      */
     public static function connection($connection = 'default')
     {
-        return ApplicationContext::getContainer()->get(SsdbFactory::class)->get($connection);
+        return ApplicationContext::getContainer()->get(SsdbManager::class)->get($connection);
     }
 }

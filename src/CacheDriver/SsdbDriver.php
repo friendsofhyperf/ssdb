@@ -10,7 +10,7 @@ declare(strict_types=1);
  */
 namespace FriendsOfHyperf\Ssdb\CacheDriver;
 
-use FriendsOfHyperf\Ssdb\SsdbFactory;
+use FriendsOfHyperf\Ssdb\SsdbManager;
 use Huangdijia\Ssdb\Ssdb;
 use Hyperf\Cache\Driver\Driver;
 use InvalidArgumentException;
@@ -27,7 +27,10 @@ class SsdbDriver extends Driver
     {
         parent::__construct($container, $config);
 
-        $this->ssdb = $container->get(SsdbFactory::class)->get($config['pool'] ?? 'default');
+        /** @var SsdbManager $manager */
+        $manager = $container->get(SsdbManager::class);
+
+        $this->ssdb = $manager->get($config['pool'] ?? 'default');
     }
 
     public function get($key, $default = null)

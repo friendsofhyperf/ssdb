@@ -24,6 +24,7 @@ class ConfigProvider
             'dependencies' => [
                 Ssdb::class => SsdbFactory::class,
                 SsdbHandler::class => SsdbHandlerFactory::class,
+                SsdbManager::class => SsdbManager::class,
             ],
             'annotations' => [
                 'scan' => [

@@ -20,7 +20,7 @@ class SsdbHandlerFactory
     {
         $config = $container->get(ConfigInterface::class);
         $connection = $config->get('session.options.connection');
-        $gcMaxLifetime = $config->get('session.options.gc_maxlifetime', 1200);
+        $gcMaxLifetime = (int) $config->get('session.options.gc_maxlifetime', 1200);
         /** @var SsdbFactory $factory */
         $factory = $container->get(SsdbFactory::class);
         $ssdb = $factory->get($connection);

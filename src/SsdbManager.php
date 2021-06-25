@@ -52,6 +52,6 @@ class SsdbManager
             });
         }
 
-        return  $this->connections[$connection];
+        return $this->connections[$connection];
     }
 }

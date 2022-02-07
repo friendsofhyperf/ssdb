@@ -3,18 +3,17 @@
     "description": "SSDB for Hyperf.",
     "type": "library",
     "require": {
-        "php": ">=7.2",
         "huangdijia/ssdb": "^0.1.0"
     },
     "require-dev": {
-        "hyperf/cache": "^2.0",
-        "hyperf/di": "^2.0",
-        "hyperf/event": "^2.1",
-        "hyperf/framework": "^2.0",
+        "hyperf/cache": "3.0.*",
+        "hyperf/di": "3.0.*",
+        "hyperf/event": "3.0.*",
+        "hyperf/framework": "3.0.*",
+        "hyperf/session": "3.0.*",
         "friendsofphp/php-cs-fixer": "^3.0",
         "swoole/ide-helper": "dev-master",
-        "phpstan/phpstan": "^0.12",
-        "hyperf/session": "^2.1"
+        "phpstan/phpstan": "^1.0"
     },
     "autoload": {
         "psr-4": {
@@ -26,6 +25,7 @@
             "config": "FriendsOfHyperf\\Ssdb\\ConfigProvider"
         }
     },
+    "minimum-stability": "dev",
     "license": "MIT",
     "authors": [{
         "name": "huangdijia",

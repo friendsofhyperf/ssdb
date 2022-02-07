@@ -15,20 +15,8 @@ use SessionHandlerInterface;
 
 class SsdbHandler implements SessionHandlerInterface
 {
-    /**
-     * @var Ssdb
-     */
-    protected $ssdb;
-
-    /**
-     * @var int
-     */
-    protected $gcMaxLifeTime = 1200;
-
-    public function __construct($redis, int $gcMaxLifeTime)
+    public function __construct(protected $ssdb, protected int $gcMaxLifeTime)
     {
-        $this->ssdb = $redis;
-        $this->gcMaxLifeTime = $gcMaxLifeTime;
     }
 
     /**

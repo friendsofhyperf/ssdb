@@ -33,7 +33,7 @@ class SsdbDriver extends Driver
         $this->ssdb = $manager->get($config['pool'] ?? 'default');
     }
 
-    public function get($key, $default = null)
+    public function get(string $key, mixed $default = null): mixed
     {
         $response = $this->ssdb->get($this->getCacheKey($key));
 
@@ -55,7 +55,7 @@ class SsdbDriver extends Driver
         return [true, $this->packer->unpack($response->data)];
     }
 
-    public function set($key, $value, $ttl = null)
+    public function set(string $key, mixed $value, null|int|\DateInterval $ttl = null): bool
     {
         $seconds = $this->secondsUntil($ttl);
         $value = $this->packer->pack($value);
@@ -67,7 +67,7 @@ class SsdbDriver extends Driver
         return $this->ssdb->set($this->getCacheKey($key), $value)->ok();
     }
 
-    public function delete($key)
+    public function delete(string $key): bool
     {
         return $this->ssdb->del($this->getCacheKey($key))->ok();
     }
@@ -91,16 +91,14 @@ class SsdbDriver extends Driver
         return true;
     }
 
-    public function clear()
+    public function clear(): bool
     {
         return $this->clearPrefix('');
     }
 
-    public function getMultiple($keys, $default = null)
+    public function getMultiple(iterable $keys, mixed $default = null): iterable
     {
-        $cacheKeys = array_map(function ($key) {
-            return $this->getCacheKey($key);
-        }, $keys);
+        $cacheKeys = array_map(fn($key) => $this->getCacheKey($key), $keys);
 
         $values = $this->ssdb->multi_get($cacheKeys)->data;
         $result = [];
@@ -112,7 +110,7 @@ class SsdbDriver extends Driver
         return $result;
     }
 
-    public function setMultiple($values, $ttl = null)
+    public function setMultiple(iterable $values, null|int|\DateInterval $ttl = null): bool
     {
         if (! is_array($values)) {
             throw new InvalidArgumentException('The values is invalid!');
@@ -136,16 +134,14 @@ class SsdbDriver extends Driver
         return $this->ssdb->multi_set($cacheKeys)->ok();
     }
 
-    public function deleteMultiple($keys)
+    public function deleteMultiple(iterable $keys): bool
     {
-        $cacheKeys = array_map(function ($key) {
-            return $this->getCacheKey($key);
-        }, $keys);
+        $cacheKeys = array_map(fn($key) => $this->getCacheKey($key), $keys);
 
         return $this->ssdb->multi_del($cacheKeys)->ok();
     }
 
-    public function has($key)
+    public function has(string $key): bool
     {
         return $this->ssdb->exists($this->getCacheKey($key))->ok();
     }

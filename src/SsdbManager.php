@@ -17,18 +17,12 @@ use Hyperf\Contract\ConfigInterface;
 class SsdbManager
 {
     /**
-     * @var ConfigInterface
-     */
-    protected $config;
-
-    /**
      * @var Ssdb[]
      */
     protected $connections = [];
 
-    public function __construct(ConfigInterface $config)
+    public function __construct(protected ConfigInterface $config)
     {
-        $this->config = $config;
     }
 
     /**

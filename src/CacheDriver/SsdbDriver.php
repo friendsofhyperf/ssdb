@@ -23,7 +23,7 @@ class SsdbDriver extends Driver
      */
     protected $ssdb;
 
-    public function __construct(ContainerInterface $container, array $config)
+    public function __construct(ContainerInterface $container, array $config = [])
     {
         parent::__construct($container, $config);
 
@@ -98,7 +98,7 @@ class SsdbDriver extends Driver
 
     public function getMultiple(iterable $keys, mixed $default = null): iterable
     {
-        $cacheKeys = array_map(fn($key) => $this->getCacheKey($key), $keys);
+        $cacheKeys = array_map(fn ($key) => $this->getCacheKey($key), $keys);
 
         $values = $this->ssdb->multi_get($cacheKeys)->data;
         $result = [];
@@ -136,7 +136,7 @@ class SsdbDriver extends Driver
 
     public function deleteMultiple(iterable $keys): bool
     {
-        $cacheKeys = array_map(fn($key) => $this->getCacheKey($key), $keys);
+        $cacheKeys = array_map(fn ($key) => $this->getCacheKey($key), $keys);
 
         return $this->ssdb->multi_del($cacheKeys)->ok();
     }

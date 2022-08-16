@@ -6,11 +6,11 @@
         "huangdijia/ssdb": "^0.1.0"
     },
     "require-dev": {
-        "hyperf/cache": "3.0.*",
-        "hyperf/di": "3.0.*",
-        "hyperf/event": "3.0.*",
-        "hyperf/framework": "3.0.*",
-        "hyperf/session": "3.0.*",
+        "hyperf/cache": "~3.0.0",
+        "hyperf/di": "~3.0.0",
+        "hyperf/event": "~3.0.0",
+        "hyperf/framework": "~3.0.0",
+        "hyperf/session": "~3.0.0",
         "friendsofphp/php-cs-fixer": "^3.0",
         "swoole/ide-helper": "dev-master",
         "phpstan/phpstan": "^1.0"

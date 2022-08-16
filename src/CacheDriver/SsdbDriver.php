@@ -18,10 +18,7 @@ use Psr\Container\ContainerInterface;
 
 class SsdbDriver extends Driver
 {
-    /**
-     * @var Ssdb
-     */
-    protected $ssdb;
+    protected Ssdb $ssdb;
 
     public function __construct(ContainerInterface $container, array $config = [])
     {

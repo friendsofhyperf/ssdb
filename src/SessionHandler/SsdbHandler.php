@@ -10,11 +10,13 @@ declare(strict_types=1);
  */
 namespace FriendsOfHyperf\Ssdb\SessionHandler;
 
+use Huangdijia\Ssdb\Ssdb;
+use ReturnTypeWillChange;
 use SessionHandlerInterface;
 
 class SsdbHandler implements SessionHandlerInterface
 {
-    public function __construct(protected $ssdb, protected int $gcMaxLifeTime)
+    public function __construct(protected Ssdb $ssdb, protected int $gcMaxLifeTime)
     {
     }
 
@@ -46,6 +48,7 @@ class SsdbHandler implements SessionHandlerInterface
      * @see https://php.net/manual/en/sessionhandlerinterface.gc.php
      * @param int $maxlifetime
      */
+    #[ReturnTypeWillChange]
     public function gc($maxlifetime): bool
     {
         return true;

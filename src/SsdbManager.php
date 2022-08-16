@@ -19,7 +19,7 @@ class SsdbManager
     /**
      * @var Ssdb[]
      */
-    protected $connections = [];
+    protected array $connections = [];
 
     public function __construct(protected ConfigInterface $config)
     {

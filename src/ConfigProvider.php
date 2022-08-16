@@ -21,20 +21,17 @@ class ConfigProvider
         defined('BASE_PATH') or define('BASE_PATH', __DIR__);
 
         return [
+            // 'annotations' => [
+            //     'scan' => [
+            //         'paths' => [
+            //             __DIR__,
+            //         ],
+            //     ],
+            // ],
             'dependencies' => [
                 Ssdb::class => SsdbFactory::class,
                 SsdbHandler::class => SsdbHandlerFactory::class,
-                SsdbManager::class => SsdbManager::class,
             ],
-            'annotations' => [
-                'scan' => [
-                    'paths' => [
-                        __DIR__,
-                    ],
-                ],
-            ],
-            'commands' => [],
-            'listeners' => [],
             'publish' => [
                 [
                     'id' => 'config',
